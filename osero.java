@@ -26,7 +26,7 @@ public class osero extends Application {
 
 	int compare;
 	Gui guiosero;
-	Rule rule = new Rule()
+	Rule rule = new Rule();
 			;
 	Label lb1;
 	Label lb2;
@@ -114,21 +114,18 @@ public class osero extends Application {
 				else rule.judge(guiosero,(int)get_x,(int)get_y, enemy, me);
 
 
-
 				lb1.setText("  Me_point="+rule.count_myPoint(guiosero)+"			");
 				lb2.setText("Enemy_point="+(rule.count(guiosero)-rule.count_myPoint(guiosero)));
 
 
-				if(rule.can_change(guiosero,compare)) rule.change_turn();
+				if(rule.can_change(guiosero,compare)) rule.change_turn(lb1,lb2);
 
 				if(rule.my_turn) {
-					lb1.setFont(Font.font("Serif",FontWeight.BLACK,18));
-					lb2.setFont(Font.font("Serif",12));}
-				else {
+
+				}else {
 					lb1.setFont(Font.font("Serif",12));
 					lb2.setFont(Font.font("Serif",FontWeight.BLACK,18));
 				}
-
 
 				if(rule.win(guiosero,me,enemy)==1)guiosero.mode=2;
 				else if(rule.win(guiosero,me,enemy)==2) guiosero.mode=3;
@@ -144,7 +141,7 @@ public class osero extends Application {
 
 	class MyMenuEventHandler implements EventHandler<ActionEvent>{
 	public void handle(ActionEvent e) {
-		if(e.getSource()==mi[0])rule.change_turn();
+		if(e.getSource()==mi[0])rule.change_turn(lb1,lb2);
 		else if(e.getSource()==mi[1]) {
 			guiosero.Reset();
 			guiosero.mode=0;

@@ -1,11 +1,15 @@
 package osero;
 
+import javafx.scene.control.Label;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+
 public class Rule {
 	boolean my_turn;
 	boolean can_C;
 	boolean exit1;
 	int win;
-	
+
 
 	Rule() {
 		my_turn = true;
@@ -14,12 +18,15 @@ public class Rule {
 		win=0;
 	}
 
-	boolean change_turn() {
+	boolean change_turn(Label lb1,Label lb2) {
 		if (my_turn) {
 			my_turn = false;
-		} else if (my_turn != true) {
+			lb1.setFont(Font.font("Serif",FontWeight.BLACK,18));
+			lb2.setFont(Font.font("Serif",12));}
+		else if (my_turn != true) {
 			my_turn = true;
-		}
+			lb1.setFont(Font.font("Serif",FontWeight.BLACK,18));
+			lb2.setFont(Font.font("Serif",12));}
 		return my_turn;
 	}
 	void judge(Gui o,int get_x,int get_y,int me,int enemy) {
