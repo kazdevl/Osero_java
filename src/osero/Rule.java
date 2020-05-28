@@ -29,8 +29,12 @@ public class Rule {
 		return my_turn;
 	}
 	void judge(Gui o,int get_x,int get_y,int me,int enemy) {
-
+		
+		//自分の駒を置いた際の、そこから次の自分のコマの間に存在する
+		//左方向(左、左斜め上、左斜め下),上下方向,右方向(右、右斜め上、右斜め下)の空白の数
 		int count[]= {0,0,0,0,0,0,0,0};
+		
+		//判定している場所の現在位置の格納
 		int nowx[]= {get_x,get_x,get_x,get_x,get_x,get_x,get_x};
 		int nowy[]= {get_y,get_y,get_y,get_y,get_y,get_y,get_y};
 
@@ -119,7 +123,7 @@ public class Rule {
 			//右方向の駒反転
 			if(count[5]==nowx[3]-get_x-1&&o.field[get_y][get_x+1]==enemy) {
 				for(int i=get_x;i<nowx[3];i++) {
-					o.field[get_y][i]=me;//隣が黒なら実行できてしまう。黒黒になってしまう。ここの修正
+					o.field[get_y][i]=me;
 				}}
 			if(count[6]==nowx[4]-get_x-1&&o.field[get_y-1][get_x+1]==enemy) {
 				for(int i=get_x;i<nowx[4];i++) {
